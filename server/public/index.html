@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>NodeJs-BackEnd</title>
+
+		<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+	</head>
+	<body>
+		<button id="get">GET</button>
+		<button id="post">POST</button>
+		<button id="put">PUT</button>
+		<button id="delete">DELETE</button>
+		<h1>input</h1>
+		<input id="name" placeholder="Name" />
+		<input id="price" placeholder="Price" />
+		<h1>output</h1>
+		<textarea id="output" disabled="disabled" cols="40" rows="5"></textarea>
+	</body>
+	<script>
+		$("#get").click(function () {
+			$.ajax({
+				url: "/products",
+				type: "get",
+				dataType: "text",
+				success: function (data) {
+					$("#output").val(data);
+				},
+			});
+		});
+		$("#post").click(function () {
+			$.ajax({
+				url: "/products",
+				type: "post",
+				dataType: "text",
+				data: {
+					name: $("#name").val(),
+					price: $("#price").val(),
+				},
+				success: function (data) {
+					$("#output").val(data);
+				},
+			});
+		});
+		$("#put").click(function () {});
+		$("#delete").click(function () {});
+	</script>
+</html>
